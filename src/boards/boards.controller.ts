@@ -18,18 +18,20 @@ import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe'
 @Controller('boards')
 export class BoardsController {
   constructor(private boardsService: BoardsService) {}
+  @Post()
+  @UsePipes(ValidationPipe)
+  createBoard(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
+    return this.boardsService.createBoard(createBoardDto);
+  }
+
   @Get('/:id')
   getBoardByID(@Param('id') id: number): Promise<Board> {
     return this.boardsService.getBoardById(id);
   }
+
   // @Get('/')
   // getAllBoard(): Board[] {
   //   return this.boardsService.getAllBoards();
-  // }
-  // @Post()
-  // @UsePipes(ValidationPipe)
-  // craeteBoard(@Body() createBoardDto: CreateBoardDto): Board {
-  //   return this.boardsService.createBoard(createBoardDto);
   // }
   // @Delete('/:id')
   // deleteBoard(@Param('id') id: string): void {
