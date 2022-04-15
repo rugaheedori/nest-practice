@@ -1,0 +1,10 @@
+db:
+  host: 'localhost'
+  usernmae: 'postgres'
+  password: 'postgres'
+  synchronize: true 
+## synchronize => 시작할 때 마다 entity를 확인 => 데이터를 다시 생성해줌
+## 다시 생성하는 과정에서 데이터가 사라질 가능성이 있어 위험성이 높다.
+
+jwt:
+  sercret: 'Secret1234'
